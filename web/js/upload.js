@@ -60,6 +60,8 @@ $(function () {
         .attr('href', img.src || img.toDataURL())
       //todo fetch sign
       var imgurl = img.toDataURL()
+
+      /*
       $.ajax({
         //url: "/api/sign",
         //url: "https://dm-21.data.aliyun.com/rest/160601/face/detection.json",
@@ -119,6 +121,7 @@ $(function () {
         //todo send dense to server
       })
     }
+    */
     result.children().replaceWith(content)
     if (img.getContext) {
       actionsNode.show()
