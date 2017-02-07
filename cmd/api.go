@@ -73,6 +73,9 @@ to quickly create a Cobra application.`,
 		//fetch sign
 		app.Post("/api/token", face.Token)
 
+		//faceplusplus
+		app.Post("/api/faceplusplus", face.FacePlusPlus)
+
 		//rest
 		app.Post("/api/detection", face.Detection)
 
