@@ -1,0 +1,12 @@
+api_host: 0.0.0.0
+api_port: 8977
+
+appid: 
+appsecret: 
+
+redis_url: 0.0.0.0:6379
+
+app_code: 
+
+face++Key: 
+face++Secret: 
