@@ -50,6 +50,11 @@ type FppFaceRectangle struct {
 	Left   int64 `json:"left"`
 }
 
+func FacePlusPlusOpiton(ctx *iris.Context) {
+	ctx.SetHeader("Access-Control-Allow-Origin", "*")
+	ctx.HTML(200, "")
+}
+
 func FacePlusPlus(ctx *iris.Context) {
 	var image map[string]string
 	err := ctx.ReadJSON(&image)
@@ -58,10 +63,22 @@ func FacePlusPlus(ctx *iris.Context) {
 	} else {
 		var b bytes.Buffer
 		w := multipart.NewWriter(&b)
-		imageData, err := base64.StdEncoding.DecodeString(image["image"])
-		if err != nil {
-			log.Println(err)
-			ctx.JSON(200, map[string]interface{}{"error": err})
+		var imageData []byte
+		if _, ok := image["serverId"]; ok {
+			var err error
+			rsp, _ := http.Get("https://api.weixin.qq.com/cgi-bin/media/get?access_token=" + getToken().Token + "&media_id=" + image["serverId"])
+			imageData, err = ioutil.ReadAll(rsp.Body)
+			if err != nil {
+				log.Println(err)
+				ctx.JSON(200, map[string]interface{}{"error": err})
+			}
+		} else {
+			var err error
+			imageData, err = base64.StdEncoding.DecodeString(image["image"])
+			if err != nil {
+				log.Println(err)
+				ctx.JSON(200, map[string]interface{}{"error": err})
+			}
 		}
 		f := bytes.NewBuffer(imageData)
 		fw, err := w.CreateFormFile("image_file", "upload.jpg")

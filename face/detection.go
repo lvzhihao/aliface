@@ -81,13 +81,6 @@ func DetectionUpload(ctx *iris.Context) {
 	ctx.Render("upload/index.html", nil)
 }
 
-func Token(ctx *iris.Context) {
-	var obj map[string]interface{}
-	ctx.ReadJSON(&obj)
-	log.Println(obj)
-	ctx.JSON(200, map[string]string{"sucess": "sss"})
-}
-
 func Detection(ctx *iris.Context) {
 	var dense []float64
 	err := ctx.ReadJSON(&dense)

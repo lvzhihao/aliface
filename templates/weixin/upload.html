@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Shopex Stage</title>
+
+        <!-- Bootstrap -->
+        <link href="/public/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <img id="image" src="http://img5.imgtn.bdimg.com/it/u=2045364163,2675612906&fm=23&gp=0.jpg" ></img>
+        <!--
+        <h2>========</h2>
+        <canvas id="myImage" />
+        -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="/public/jquery/dist/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/public/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script>
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: '{{ .config.AppId }}', // 必填，公众号的唯一标识
+                timestamp: {{ .config.TimeStamp }}, // 必填，生成签名的时间戳
+                nonceStr: '{{ .config.NonceStr }}', // 必填，生成签名的随机串
+                signature: '{{ .config.Sign }}',// 必填，签名，见附录1
+                jsApiList: [
+                    "chooseImage",
+                    "uploadImage"
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+        </script>
+        <script src="/web/js/weixin.js"></script>
+    </body>
+</html>

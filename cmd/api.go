@@ -70,11 +70,11 @@ to quickly create a Cobra application.`,
 
 		app.Get("/detection", face.DetectionUpload)
 
-		//fetch sign
-		app.Post("/api/token", face.Token)
+		app.Get("/weixin", face.WeixinUpload)
 
 		//faceplusplus
 		app.Post("/api/faceplusplus", face.FacePlusPlus)
+		app.Options("/api/faceplusplus", face.FacePlusPlusOpiton)
 
 		//rest
 		app.Post("/api/detection", face.Detection)

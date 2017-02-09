@@ -43,6 +43,7 @@
     "license": "MIT",
     "dependencies": {
         "jquery": ">=1.6",
+        "bootstrap": ">=3.0",
         "blueimp-tmpl": ">=2.5.4",
         "blueimp-load-image": ">=1.13.0",
         "blueimp-canvas-to-blob": ">=2.1.1"
